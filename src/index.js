@@ -25,6 +25,7 @@ const authenticate = (email, password) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
+  console.log(requestOptions);
   return fetch(`${ApplicationRecord.baseUrl}/plc_user_tokens`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
