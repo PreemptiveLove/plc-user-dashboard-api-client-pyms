@@ -6,7 +6,6 @@ const ApplicationRecord = SpraypaintBase.extend({
   static: {
     jwtStorage:         "plcJwt",
     baseUrl:            "",
-    apiNamespace:       "/api/v1",
     generateAuthHeader: function(token) {
       return "Bearer " + token;
     }
@@ -26,7 +25,7 @@ const authenticate = (email, password) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
-  return fetch(`${ApplicationRecord.baseUrl}${ApplicationRecord.apiNamespace}/plc_user_tokens`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}/plc_user_tokens`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
@@ -81,7 +80,7 @@ const requestLoginLink = (email) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
-  return fetch(`${ApplicationRecord.baseUrl}${ApplicationRecord.apiNamespace}/plc_user_login_links`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}/plc_user_login_links`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return resolve(true);
