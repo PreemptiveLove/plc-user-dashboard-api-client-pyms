@@ -29,7 +29,7 @@ const authenticate = (email, password) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
-          const jwt = json.jwt
+          const jwt = json.token
           localStorage.setItem("plcJwt", jwt);
           resolve({ jwt: jwt });
         });
@@ -272,9 +272,9 @@ const setBaseUrl = (baseUrl) => {
 
 const setEnvironment = (env) => {
   if (env == 'production') {
-    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg");
+    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg/");
   } else {
-    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg");
+    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg/");
   }
 }
 
