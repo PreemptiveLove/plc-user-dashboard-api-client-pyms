@@ -1,0 +1,32 @@
+{
+  "name": "plc-user-dashboard-api-client-pyms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --content-base dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-webpack": "^6.4.3",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "jsorm": "^1.3.22",
+    "jwt-decode": "^2.2.0",
+    "spraypaint": "^0.2.0",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
