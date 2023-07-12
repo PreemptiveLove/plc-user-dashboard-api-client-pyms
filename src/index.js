@@ -14,10 +14,8 @@ const ApplicationRecord = SpraypaintBase.extend({
 
 const authenticate = (email, password) => {
   const requestBody = JSON.stringify({
-    auth: {
-      email:    email,
-      password: password
-    }
+      "email":    email,
+      "password": password
   });
   const requestOptions = {
     method:       "POST",
