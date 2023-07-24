@@ -28,7 +28,7 @@ const authenticate = (email, password) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
-          const jwt = json.token
+          const jwt = json.plcJwt
           localStorage.setItem("plcJwt", jwt);
           resolve({ jwt: jwt });
         });
