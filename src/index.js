@@ -28,7 +28,7 @@ const authenticate = (email, password) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
-          const jwt = json.token
+          const jwt = json.plcJwt
           localStorage.setItem("plcJwt", jwt);
           resolve({ jwt: jwt });
         });
@@ -271,9 +271,9 @@ const setBaseUrl = (baseUrl) => {
 
 const setEnvironment = (env) => {
   if (env == 'production') {
-    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   } else {
-    setBaseUrl("https://5ut104g6id.execute-api.us-east-1.amazonaws.com/stg/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   }
 }
 
