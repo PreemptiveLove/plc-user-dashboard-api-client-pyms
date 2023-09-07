@@ -82,7 +82,7 @@ const requestLoginLink = (email) => {
   return fetch(`${ApplicationRecord.baseUrl}/plc_user_login_links`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
-        return resolve(true);
+        return resolve(response);
       } else {
         return reject(response);
       }
@@ -271,9 +271,9 @@ const setBaseUrl = (baseUrl) => {
 
 const setEnvironment = (env) => {
   if (env == 'production') {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
   } else {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
   }
 }
 
