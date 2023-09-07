@@ -6,6 +6,7 @@ const ApplicationRecord = SpraypaintBase.extend({
   static: {
     jwtStorage:         "plcJwt",
     baseUrl:            "",
+    apiNamespace:       "",
     generateAuthHeader: function(token) {
       return "Bearer " + token;
     }
@@ -24,7 +25,7 @@ const authenticate = (email, password) => {
     credentials:  "same-origin"
   };
   console.log(requestOptions);
-  return fetch(`${ApplicationRecord.baseUrl}plc_user_tokens`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}/plc_user_tokens`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
@@ -79,7 +80,7 @@ const requestLoginLink = (email) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
-  return fetch(`${ApplicationRecord.baseUrl}plc_user_login_links`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}/plc_user_login_links`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return resolve(response);
@@ -271,9 +272,9 @@ const setBaseUrl = (baseUrl) => {
 
 const setEnvironment = (env) => {
   if (env == 'production') {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   } else {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   }
 }
 
