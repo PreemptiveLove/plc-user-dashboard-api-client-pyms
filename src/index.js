@@ -6,6 +6,7 @@ const ApplicationRecord = SpraypaintBase.extend({
   static: {
     jwtStorage:         "plcJwt",
     baseUrl:            "",
+    apiNamespace:       "",
     generateAuthHeader: function(token) {
       return "Bearer " + token;
     }
@@ -271,9 +272,9 @@ const setBaseUrl = (baseUrl) => {
 
 const setEnvironment = (env) => {
   if (env == 'production') {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   } else {
-    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com/");
+    setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
   }
 }
 
