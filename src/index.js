@@ -24,7 +24,7 @@ const authenticate = (email, password) => {
     credentials:  "same-origin"
   };
   console.log(requestOptions);
-  return fetch(`${ApplicationRecord.baseUrl}/plc_user_tokens`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}plc_user_tokens`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
@@ -79,7 +79,7 @@ const requestLoginLink = (email) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
-  return fetch(`${ApplicationRecord.baseUrl}/plc_user_login_links`, requestOptions).then((response) => {
+  return fetch(`${ApplicationRecord.baseUrl}plc_user_login_links`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return resolve(response);
