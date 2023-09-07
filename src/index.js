@@ -8,7 +8,7 @@ const ApplicationRecord = SpraypaintBase.extend({
     baseUrl:            "",
     apiNamespace:       "",
     generateAuthHeader: function(token) {
-      return token;
+      return "Bearer " + token;
     }
   }
 })
