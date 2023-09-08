@@ -91,13 +91,13 @@ const requestLoginLink = (email) => {
   });
 }
 
-const resetPassword = (password, urlString) => {
+const resetPassword = (password, email) => {
   console.log("resetPassword");
-  console.log(urlString);
+  // console.log(urlString);
   // var urlParams = new URLSearchParams(window.location.search);
-  let params = new URL(urlString).searchParams;
-  console.log("params: "+params);
-  const email = params.get('email');
+  // let params = new URL(urlString).searchParams;
+  // console.log("params: "+params);
+  var email = email;
   console.log("email: "+email);
   // if(!email && !empty(email) && email !=='' )
   //   localStorage.getItem('plcJwt', jwt);
