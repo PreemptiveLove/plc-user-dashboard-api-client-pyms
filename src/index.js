@@ -95,7 +95,8 @@ const resetPassword = (password) => {
   console.log("resetPassword");
   let params = new URL(urlString).searchParams;
   const jwt = params.get('plcJwt');
-  // localStorage.setItem('plcJwt', jwt);
+  if(!jwt && !empty(jwt) && jwt !=='' )
+    localStorage.getItem('plcJwt', jwt);
   const requestBody = JSON.stringify({
       "password": password
   });
