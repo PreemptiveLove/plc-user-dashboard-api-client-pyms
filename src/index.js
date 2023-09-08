@@ -121,9 +121,9 @@ const resetPassword = (password, urlString) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
         return response.json().then((json) => {
-          const jwt = json.plcJwt
-          localStorage.setItem("plcJwt", jwt);
-          resolve({ jwt: jwt });
+          // const jwt = json.plcJwt
+          // localStorage.setItem("plcJwt", jwt);
+          resolve(json);
         });
       } else {
         return response.json().then((response) => {
