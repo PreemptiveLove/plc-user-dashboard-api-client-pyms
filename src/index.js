@@ -93,13 +93,18 @@ const requestLoginLink = (email) => {
 
 const resetPassword = (password, urlString) => {
   console.log("resetPassword");
+  console.log(urlString);
   // var urlParams = new URLSearchParams(window.location.search);
   let params = new URL(urlString).searchParams;
   const jwt = params.get('plcJwt');
   if(!jwt && !empty(jwt) && jwt !=='' )
     localStorage.getItem('plcJwt', jwt);
   const requestBody = JSON.stringify({
-      "password": password
+    "data": {
+        "attributes": {
+          "password": password
+        }
+    }
   });
   const requestOptions = {
     method:       "PATCH",
