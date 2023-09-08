@@ -96,12 +96,15 @@ const resetPassword = (password, urlString) => {
   console.log(urlString);
   // var urlParams = new URLSearchParams(window.location.search);
   let params = new URL(urlString).searchParams;
-  const jwt = params.get('plcJwt');
-  if(!jwt && !empty(jwt) && jwt !=='' )
-    localStorage.getItem('plcJwt', jwt);
+  console.log("params: "+params);
+  const email = params.get('email');
+  console.log("email: "+email);
+  // if(!email && !empty(email) && email !=='' )
+  //   localStorage.getItem('plcJwt', jwt);
   const requestBody = JSON.stringify({
     "data": {
         "attributes": {
+          "email": email,
           "password": password
         }
     }
@@ -110,7 +113,6 @@ const resetPassword = (password, urlString) => {
     method:       "POST",
     body:         requestBody,
     headers:      { "Content-Type": "application/json",
-                    "Authorization": "Bearer "+jwt
                   },
     credentials:  "same-origin"
   };
