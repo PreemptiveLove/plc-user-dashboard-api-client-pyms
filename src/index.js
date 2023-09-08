@@ -107,7 +107,7 @@ const resetPassword = (password, urlString) => {
     }
   });
   const requestOptions = {
-    method:       "PATCH",
+    method:       "POST",
     body:         requestBody,
     headers:      { "Content-Type": "application/json",
                     "Authorization": "Bearer "+jwt
