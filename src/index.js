@@ -95,14 +95,16 @@ const resetPassword = (password) => {
   console.log("resetPassword");
   let params = new URL(urlString).searchParams;
   const jwt = params.get('plcJwt');
-  localStorage.setItem('plcJwt', jwt);
+  // localStorage.setItem('plcJwt', jwt);
   const requestBody = JSON.stringify({
       "password": password
   });
   const requestOptions = {
     method:       "PATCH",
     body:         requestBody,
-    headers:      { "Content-Type": "application/json" },
+    headers:      { "Content-Type": "application/json",
+                    "Bearer": jwt
+                  },
     credentials:  "same-origin"
   };
   console.log(requestOptions);
