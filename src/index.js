@@ -91,6 +91,42 @@ const requestLoginLink = (email) => {
   });
 }
 
+const resetPassword = (password, urlString) => {
+  console.log("resetPassword");
+  // var urlParams = new URLSearchParams(window.location.search);
+  let params = new URL(urlString).searchParams;
+  const jwt = params.get('plcJwt');
+  if(!jwt && !empty(jwt) && jwt !=='' )
+    localStorage.getItem('plcJwt', jwt);
+  const requestBody = JSON.stringify({
+      "password": password
+  });
+  const requestOptions = {
+    method:       "PATCH",
+    body:         requestBody,
+    headers:      { "Content-Type": "application/json",
+                    "Bearer": jwt
+                  },
+    credentials:  "same-origin"
+  };
+  console.log(requestOptions);
+  return fetch(`${ApplicationRecord.baseUrl}/plc_reset_password`, requestOptions).then((response) => {
+    return new Promise((resolve, reject) => {
+      if (response.ok) {
+        return response.json().then((json) => {
+          const jwt = json.plcJwt
+          localStorage.setItem("plcJwt", jwt);
+          resolve({ jwt: jwt });
+        });
+      } else {
+        return response.json().then((response) => {
+          reject(response);
+        });
+      }
+    });
+  });
+}
+
 const logout = () => {
   return localStorage.removeItem("plcJwt");
 }
@@ -283,6 +319,7 @@ module.exports = {
   authenticateFromUrl: authenticateFromUrl,
   isAuthenticated: isAuthenticated,
   requestLoginLink: requestLoginLink,
+  resetPassword: resetPassword,
   logout: logout,
   PlcUser: PlcUser,
   PlcTransaction: PlcTransaction,
