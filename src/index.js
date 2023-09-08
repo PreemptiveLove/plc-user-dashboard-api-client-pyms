@@ -110,7 +110,7 @@ const resetPassword = (password, urlString) => {
     method:       "PATCH",
     body:         requestBody,
     headers:      { "Content-Type": "application/json",
-                    "Bearer": jwt
+                    "Authorization": "Bearer "+jwt
                   },
     credentials:  "same-origin"
   };
