@@ -91,8 +91,9 @@ const requestLoginLink = (email) => {
   });
 }
 
-const resetPassword = (password) => {
+const resetPassword = (password, urlString) => {
   console.log("resetPassword");
+  // var urlParams = new URLSearchParams(window.location.search);
   let params = new URL(urlString).searchParams;
   const jwt = params.get('plcJwt');
   if(!jwt && !empty(jwt) && jwt !=='' )
