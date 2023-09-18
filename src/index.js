@@ -24,7 +24,7 @@ const authenticate = (email, password) => {
     headers:      { "Content-Type": "application/json" },
     credentials:  "same-origin"
   };
-  console.log(requestOptions);
+
   return fetch(`${ApplicationRecord.baseUrl}/plc_user_tokens`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
@@ -92,13 +92,7 @@ const requestLoginLink = (email) => {
 }
 
 const resetPassword = (password, email) => {
-  console.log("resetPassword");
-  // console.log(urlString);
-  // var urlParams = new URLSearchParams(window.location.search);
-  // let params = new URL(urlString).searchParams;
-  // console.log("params: "+params);
   var email = email;
-  console.log("email: "+email);
   // if(!email && !empty(email) && email !=='' )
   //   localStorage.getItem('plcJwt', jwt);
   const requestBody = JSON.stringify({
@@ -116,7 +110,7 @@ const resetPassword = (password, email) => {
                   },
     credentials:  "same-origin"
   };
-  console.log(requestOptions);
+
   return fetch(`${ApplicationRecord.baseUrl}/plc_reset_password`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
       if (response.ok) {
