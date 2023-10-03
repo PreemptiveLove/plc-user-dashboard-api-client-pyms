@@ -144,9 +144,12 @@ const cancelSubscription = (id, fields) => {
   const requestOptions = {
     method:       "POST",
     body:         requestBody,
-    headers:      { "Content-Type": "application/json" },
+    headers:      {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+jwt
+    },
     credentials:  "same-origin",
-    Authorization: "Bearer "+jwt
+
   };
   return fetch(`${ApplicationRecord.baseUrl}/cancel_subscription`, requestOptions).then((response) => {
     return new Promise((resolve, reject) => {
