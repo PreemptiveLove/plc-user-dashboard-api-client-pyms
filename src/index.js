@@ -131,13 +131,13 @@ const resetPassword = (password, email) => {
 const cancelSubscription = (id, fields) => {
   console.log(id);
   console.log(fields);
-  var cancelReason = fields.cancellationReason;
-  var cancellationReason = fields.cancellationReasonDescription;
+  var cancellationReason = fields.cancellationReason;
+  var cancelReason = fields.cancellationReasonDescription;
   const jwt = localStorage.getItem("plcJwt");
   const requestBody = JSON.stringify({
     subscriptionId: id,
-    cancelReason: cancelReason,
-    cancellationReason: cancellationReason
+    cancellationReason: cancellationReason,
+    cancelReason: cancelReason
   });
   console.log("requestBody");
   console.log(requestBody);
