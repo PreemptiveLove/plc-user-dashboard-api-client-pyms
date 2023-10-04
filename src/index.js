@@ -342,11 +342,11 @@ const setBaseUrl = (baseUrl) => {
 }
 
 const setEnvironment = (env) => {
-  if (env == 'production') {
-    setBaseUrl("https://donors-accounts.prod.paymentpreemptivelove.com");
-  } else {
+  // if (env == 'production') {
+  //   setBaseUrl("https://donors-accounts.prod.paymentpreemptivelove.com");
+  // } else {
     setBaseUrl("https://donors-accounts.stg.paymentpreemptivelove.com");
-  }
+  // }
 }
 
 module.exports = {
