@@ -129,18 +129,17 @@ const resetPassword = (password, email) => {
 }
 
 const cancelSubscription = (id, fields) => {
-  console.log(id);
-  console.log(fields);
   var cancellationReason = fields.cancellationReason;
   var cancelReason = fields.cancellationReasonDescription;
+  var removeFromEmailList = fields.removeFromEmailList
   const jwt = localStorage.getItem("plcJwt");
   const requestBody = JSON.stringify({
     subscriptionId: id,
     cancellationReason: cancellationReason,
-    cancelReason: cancelReason
+    cancelReason: cancelReason,
+    removeFromEmailList: removeFromEmailList
   });
-  console.log("requestBody");
-  console.log(requestBody);
+
   const requestOptions = {
     method:       "POST",
     body:         requestBody,
