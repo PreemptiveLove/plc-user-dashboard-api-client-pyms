@@ -128,6 +128,39 @@ const resetPassword = (password, email) => {
   });
 }
 
+const cancelSubscription = (id, fields) => {
+  var cancellationReason = fields.cancellationReason;
+  var cancelReason = fields.cancellationReasonDescription;
+  var removeFromEmailList = fields.removeFromEmailList
+  const jwt = localStorage.getItem("plcJwt");
+  const requestBody = JSON.stringify({
+    subscriptionId: id,
+    cancellationReason: cancellationReason,
+    cancelReason: cancelReason,
+    removeFromEmailList: removeFromEmailList
+  });
+
+  const requestOptions = {
+    method:       "POST",
+    body:         requestBody,
+    headers:      {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+jwt
+    },
+    credentials:  "same-origin",
+
+  };
+  return fetch(`${ApplicationRecord.baseUrl}/cancel_subscription`, requestOptions).then((response) => {
+    return new Promise((resolve, reject) => {
+      if (response.ok) {
+        return resolve(response);
+      } else {
+        return reject(response);
+      }
+    });
+  });
+}
+
 const logout = () => {
   return localStorage.removeItem("plcJwt");
 }
@@ -321,6 +354,7 @@ module.exports = {
   isAuthenticated: isAuthenticated,
   requestLoginLink: requestLoginLink,
   resetPassword: resetPassword,
+  cancelSubscription: cancelSubscription,
   logout: logout,
   PlcUser: PlcUser,
   PlcTransaction: PlcTransaction,
